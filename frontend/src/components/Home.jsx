@@ -21,6 +21,11 @@ const Home = () => {
         { id: 1, image: "/img/hero/hero-1.jpg", text: "Be strong training hard" },
         { id: 2, image: "/img/hero/hero-2.jpg", text: "Push yourself to the limit" },
     ];
+
+
+    
+
+
     return (
         <>
             {/* Hero Section Begin */}

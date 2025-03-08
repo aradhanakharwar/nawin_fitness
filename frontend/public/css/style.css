@@ -2758,7 +2758,7 @@ ol {
 }
 
 /* ---------------my code---------------- */
-.team-slider-container {
+/* .team-slider-container {
 	width: 80%;
 	margin: auto;
   }
@@ -2793,8 +2793,64 @@ ol {
   .team-text span {
 	font-size: 14px;
 	font-weight: 300;
-  }
+  } */
   
+
+
+
+
+  .team-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+}
+
+.team-title .section-title {
+    text-align: left;
+}
+
+.team-title .section-title span {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ff6600;
+    text-transform: uppercase;
+    display: block;
+}
+
+.team-title .section-title h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #222;
+    margin-top: 5px;
+}
+
+.appoinment-btn {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 12px 25px;
+    background-color: #ff6600;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.appoinment-btn:hover {
+    background-color: #e55a00;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*--------------------------------- Responsive Media Quaries -----------------------------*/
 
