@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
-// import "owl.carousel/dist/assets/owl.carousel.css"; // Import Owl Carousel CSS if needed
-// import "owl.carousel";
-import team1 from "../assets/img/team/team-1.jpg";;
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const Home = () => {
     useEffect(() => {
@@ -23,7 +23,16 @@ const Home = () => {
     ];
 
 
-    
+    const testimonialSettings = {
+        dots: true,
+        arrows: false,
+        infinite: true,
+        speed: 800,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 5000
+    };
 
 
     return (
@@ -318,7 +327,6 @@ const Home = () => {
                     <div className="row">
                         <div className="ts-slider owl-carousel owl-loaded owl-drag">
                             <div className="col-lg-4">
-                                {/* <div className="ts-item set-bg" data-setbg="img/team/team-1.jpg"> */}
                                 <div className="ts-item set-bg" style={{ backgroundImage: "url('/img/team/team-1.jpg')" }}>
                                     <div className="ts_text">
                                         <h4>Athart Rachel</h4>
@@ -327,7 +335,6 @@ const Home = () => {
                                 </div>
                             </div>
                             <div className="col-lg-4">
-                                {/* <div className="ts-item set-bg" data-setbg="img/team/team-2.jpg"> */}
                                 <div className="ts-item set-bg" style={{ backgroundImage: "url('/img/team/team-2.jpg')" }}>
                                     <div className="ts_text">
                                         <h4>Athart Rachel</h4>
@@ -336,7 +343,6 @@ const Home = () => {
                                 </div>
                             </div>
                             <div className="col-lg-4">
-                                {/* <div className="ts-item set-bg" data-setbg="img/team/team-3.jpg"> */}
                                 <div className="ts-item set-bg" style={{ backgroundImage: "url('/img/team/team-3.jpg')" }}>
                                     <div className="ts_text">
                                         <h4>Athart Rachel</h4>
@@ -345,7 +351,6 @@ const Home = () => {
                                 </div>
                             </div>
                             <div className="col-lg-4">
-                                {/* <div className="ts-item set-bg" data-setbg="img/team/team-4.jpg"> */}
                                 <div className="ts-item set-bg" style={{ backgroundImage: "url('/img/team/team-4.jpg')" }}>
                                     <div className="ts_text">
                                         <h4>Athart Rachel</h4>
@@ -354,7 +359,6 @@ const Home = () => {
                                 </div>
                             </div>
                             <div className="col-lg-4">
-                                {/* <div className="ts-item set-bg" data-setbg="img/team/team-5.jpg"> */}
                                 <div className="ts-item set-bg" style={{ backgroundImage: "url('/img/team/team-5.jpg')" }}>
                                     <div className="ts_text">
                                         <h4>Athart Rachel</h4>
@@ -363,7 +367,6 @@ const Home = () => {
                                 </div>
                             </div>
                             <div className="col-lg-4">
-                                {/* <div className="ts-item set-bg" data-setbg="img/team/team-6.jpg"> */}
                                 <div className="ts-item set-bg" style={{ backgroundImage: "url('/img/team/team-6.jpg')" }}>
                                     <div className="ts_text">
                                         <h4>Athart Rachel</h4>
@@ -373,8 +376,26 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+
+                    {/* --------------------------------------------- */}
+                    <Slider {...testimonialSettings} className="row">
+                            {[1, 2, 3, 4, 5, 6].map((num) => (
+                        <div className="ts-slider owl-carousel owl-loaded owl-drag" key={num}>
+                                <div className="col-lg-4">
+                                    <div className="ts-item set-bg" style={{ backgroundImage: `url('/img/team/team-${num}.jpg')` }}>
+                                        <div className="ts_text">
+                                            <h4>Athart Rachel</h4>
+                                            <span>Gym Trainer</span>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                            ))}
+                    </Slider>
+
+
+                </div >
+            </section >
             {/* Team Section End */}
 
             {/* Get In Touch Section Begin */}
