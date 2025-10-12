@@ -32,7 +32,78 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+
+/* my css */
+/* css for image preview of galleryb section */
+/* Gallery.css */
+
+/* --- Modal Styles --- */
+
+.image-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.image-modal-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  cursor: default;
+}
+
+.image-modal-content img {
+  display: block;
+  max-width: 100%;
+  max-height: 90vh;
+  border-radius: 5px;
+}
+
+/* --- The Close Button 'X' --- */
+.modal-close-button {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 35px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 1010;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.modal-close-button:hover {
+  background-color: #f0f0f0;
+}
+
+/* --- You need this for the clickable icon --- */
+.thumb-icon {
+  cursor: pointer;
+  /* Your existing styles for thumb-icon */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

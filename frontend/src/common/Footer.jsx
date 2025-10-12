@@ -4,6 +4,36 @@ const Footer = () => {
     return (
         <>
 
+            {/* Get In Touch Section Begin */}
+            <div class="gettouch-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="gt-text">
+                                <i class="fa fa-map-marker"></i>
+                                <p>333 Middle Winchendon Rd, Rindge,<br /> NH 03461</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="gt-text">
+                                <i class="fa fa-mobile"></i>
+                                <ul>
+                                    <li>125-711-811</li>
+                                    <li>125-668-886</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="gt-text email">
+                                <i class="fa fa-envelope"></i>
+                                <p>Support.gymcenter@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/* Get In Touch Section End */}
+
             {/* Footer Section Begin */}
             <section className="footer-section">
                 <div className="container">
@@ -73,7 +103,7 @@ const Footer = () => {
                                     {/* Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. */}
                                     Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i className="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
                                     {/* Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. */}
-                                    </p>
+                                </p>
                             </div>
                         </div>
                     </div>

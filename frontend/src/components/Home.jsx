@@ -13,7 +13,7 @@ const Home = () => {
             autoplayTimeout: 9000,
             nav: true,
             dots: false,
-            navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+            navText: ["<i className='fa fa-angle-left'></i>", "<i className='fa fa-angle-right'></i>"],
         });
     }, []);
 
@@ -24,7 +24,7 @@ const Home = () => {
 
 
     const testimonialSettings = {
-        dots: true,
+        dots: false,
         arrows: false,
         infinite: true,
         speed: 800,
@@ -324,109 +324,34 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="ts-slider owl-carousel owl-loaded owl-drag">
-                            <div className="col-lg-4">
-                                <div className="ts-item set-bg" style={{ backgroundImage: "url('/img/team/team-1.jpg')" }}>
-                                    <div className="ts_text">
-                                        <h4>Athart Rachel</h4>
-                                        <span>Gym Trainer</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-4">
-                                <div className="ts-item set-bg" style={{ backgroundImage: "url('/img/team/team-2.jpg')" }}>
-                                    <div className="ts_text">
-                                        <h4>Athart Rachel</h4>
-                                        <span>Gym Trainer</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-4">
-                                <div className="ts-item set-bg" style={{ backgroundImage: "url('/img/team/team-3.jpg')" }}>
-                                    <div className="ts_text">
-                                        <h4>Athart Rachel</h4>
-                                        <span>Gym Trainer</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-4">
-                                <div className="ts-item set-bg" style={{ backgroundImage: "url('/img/team/team-4.jpg')" }}>
-                                    <div className="ts_text">
-                                        <h4>Athart Rachel</h4>
-                                        <span>Gym Trainer</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-4">
-                                <div className="ts-item set-bg" style={{ backgroundImage: "url('/img/team/team-5.jpg')" }}>
-                                    <div className="ts_text">
-                                        <h4>Athart Rachel</h4>
-                                        <span>Gym Trainer</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-4">
-                                <div className="ts-item set-bg" style={{ backgroundImage: "url('/img/team/team-6.jpg')" }}>
-                                    <div className="ts_text">
-                                        <h4>Athart Rachel</h4>
-                                        <span>Gym Trainer</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* --------------------------------------------- */}
                     <Slider {...testimonialSettings} className="row">
-                            {[1, 2, 3, 4, 5, 6].map((num) => (
-                        <div className="ts-slider owl-carousel owl-loaded owl-drag" key={num}>
-                                <div className="col-lg-4">
-                                    <div className="ts-item set-bg" style={{ backgroundImage: `url('/img/team/team-${num}.jpg')` }}>
-                                        <div className="ts_text">
-                                            <h4>Athart Rachel</h4>
-                                            <span>Gym Trainer</span>
+                        {[0, 1].map((groupIndex) => (
+                            <>
+                            <div key={groupIndex} className="ts-slider owl-carousel owl-loaded owl-drag">
+                                {[1, 2, 3].map((numOffset) => {
+                                    const num = groupIndex * 3 + numOffset;
+                                    return (
+                                        <div className="col-lg-4" key={num}>
+                                            <div className="ts-item set-bg" style={{ backgroundImage: `url('/img/team/team-${num}.jpg')` }}>
+                                                <div className="ts_text">
+                                                    <h4>Athart Rachel</h4>
+                                                    <span>Gym Trainer</span>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                        </div>
-                            ))}
+                                    );
+                                })}
+                            </div>
+                            {/* <div className="owl-dots"><button role="button" className="owl-dot active"><span></span></button><button role="button" className="owl-dot"><span></span></button><button role="button" className="owl-dot"><span></span></button></div> */}
+                            </>
+                        ))}
                     </Slider>
 
 
-                </div >
-            </section >
-            {/* Team Section End */}
 
-            {/* Get In Touch Section Begin */}
-            <div className="gettouch-section">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-4">
-                            <div className="gt-text">
-                                <i className="fa fa-map-marker"></i>
-                                <p>333 Middle Winchendon Rd, Rindge,<br /> NH 03461</p>
-                            </div>
-                        </div>
-                        <div className="col-md-4">
-                            <div className="gt-text">
-                                <i className="fa fa-mobile"></i>
-                                <ul>
-                                    <li>125-711-811</li>
-                                    <li>125-668-886</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div className="col-md-4">
-                            <div className="gt-text email">
-                                <i className="fa fa-envelope"></i>
-                                <p>Support.gymcenter@gmail.com</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-            </div>
-            {/* Get In Touch Section End */}
+            </section>
+            {/* Team Section End */}
         </>
     )
 }

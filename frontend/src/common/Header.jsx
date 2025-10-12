@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
     return (
@@ -62,19 +63,20 @@ const Header = () => {
                             <nav className="nav-menu">
                                 <ul>
                                     <li className="active"><a href="/">Home</a></li>
-                                    <li><a href="/about-us">About Us</a></li>
-                                    <li><a href="./class-details.html">Classes</a></li>
-                                    <li><a href="./services.html">Services</a></li>
-                                    <li><a href="./team.html">Our Team</a></li>
+                                    {/* <li><a href="/about-us">About Us</a></li> */}
+                                    <li><Link to="/about-us">About Us</Link></li>
+                                    <li><Link to="/classes">Classes</Link></li>
+                                    <li><Link to="/services">Services</Link></li>
+                                    {/* <li><Link to="./team.html">Our Team</Link></li> */}
                                     <li><a href="#">Pages</a>
                                         <ul className="dropdown">
-                                            <li><a href="/about-us">About us</a></li>
-                                            <li><a href="./class-timetable.html">Classes timetable</a></li>
-                                            <li><a href="./bmi-calculator.html">Bmi calculate</a></li>
-                                            <li><a href="./team.html">Our team</a></li>
-                                            <li><a href="./gallery.html">Gallery</a></li>
-                                            <li><a href="./blog.html">Our blog</a></li>
-                                            <li><a href="./404.html">404</a></li>
+                                            <li><Link to="/about-us">About us</Link></li>
+                                            <li><Link to="/classes">Classes timetable</Link></li>
+                                            <li><Link to="/bmi-calculator">Bmi calculate</Link></li>
+                                            {/* <li><Link to="./team.html">Our team</Link></li> */}
+                                            <li><Link to="/gallery">Gallery</Link></li>
+                                            <li><Link to="/blogs">Our blog</Link></li>
+                                            {/* <li><Link to="./404.html">404</Link></li> */}
                                         </ul>
                                     </li>
                                     <li><a href="./contact.html">Contact</a></li>
