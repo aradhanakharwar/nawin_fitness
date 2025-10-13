@@ -68,7 +68,7 @@ const Header = () => {
                                     <li><Link to="/classes">Classes</Link></li>
                                     <li><Link to="/services">Services</Link></li>
                                     {/* <li><Link to="./team.html">Our Team</Link></li> */}
-                                    <li><a href="#">Pages</a>
+                                    <li><Link to="">Pages</Link>
                                         <ul className="dropdown">
                                             <li><Link to="/about-us">About us</Link></li>
                                             <li><Link to="/classes">Classes timetable</Link></li>
@@ -79,7 +79,7 @@ const Header = () => {
                                             {/* <li><Link to="./404.html">404</Link></li> */}
                                         </ul>
                                     </li>
-                                    <li><a href="./contact.html">Contact</a></li>
+                                    <li><Link to="/contact">Contact</Link></li>
                                 </ul>
                             </nav>
                         </div>

@@ -11,6 +11,7 @@ import BmiCalculator from './components/BmiCalculator';
 import Gallery from './components/Gallery';
 import Blog from './components/Blog';
 import NotFoundPage from './components/NotFoundPage';
+import Contact from './components/Contact';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/bmi-calculator" element={<BmiCalculator />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/blogs" element={<Blog />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -32,6 +32,29 @@ const Home = () => {
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 5000
+    };
+
+
+
+    const galleryData = [
+        { id: 1, src: 'img/gallery/gallery-1.jpg', isWide: true },
+        { id: 2, src: 'img/gallery/gallery-2.jpg', isWide: false },
+        { id: 3, src: 'img/gallery/gallery-3.jpg', isWide: false },
+        { id: 4, src: 'img/gallery/gallery-4.jpg', isWide: false },
+        { id: 5, src: 'img/gallery/gallery-5.jpg', isWide: false },
+        { id: 6, src: 'img/gallery/gallery-6.jpg', isWide: true }
+    ];
+
+    // 2. State to manage the currently opened image
+    const [selectedImage, setSelectedImage] = useState(null);
+
+    // 3. Functions to open and close the modal
+    const openModal = (imageSrc) => {
+        setSelectedImage(imageSrc);
+    };
+
+    const closeModal = () => {
+        setSelectedImage(null);
     };
 
 
@@ -288,26 +311,30 @@ const Home = () => {
             <div className="gallery-section">
                 <div className="gallery">
                     {/* <div className="grid-sizer"></div> */}
-                    <div className="gs-item grid-wide set-bg" style={{ backgroundImage: "url('img/gallery/gallery-1.jpg')" }}>
-                        <a href="img/gallery/gallery-1.jpg" className="thumb-icon image-popup"><i className="fa fa-picture-o"></i></a>
-                    </div>
-                    <div className="gs-item set-bg" style={{ backgroundImage: "url('img/gallery/gallery-2.jpg')" }}>
-                        <a href="img/gallery/gallery-2.jpg" className="thumb-icon image-popup"><i className="fa fa-picture-o"></i></a>
-                    </div>
-                    <div className="gs-item set-bg" style={{ backgroundImage: "url('img/gallery/gallery-3.jpg')" }}>
-                        <a href="img/gallery/gallery-3.jpg" className="thumb-icon image-popup"><i className="fa fa-picture-o"></i></a>
-                    </div>
-                    <div className="gs-item set-bg" style={{ backgroundImage: "url('img/gallery/gallery-4.jpg')" }}>
-                        <a href="img/gallery/gallery-4.jpg" className="thumb-icon image-popup"><i className="fa fa-picture-o"></i></a>
-                    </div>
-                    <div className="gs-item set-bg" style={{ backgroundImage: "url('img/gallery/gallery-5.jpg')" }}>
-                        <a href="img/gallery/gallery-5.jpg" className="thumb-icon image-popup"><i className="fa fa-picture-o"></i></a>
-                    </div>
-                    <div className="gs-item grid-wide set-bg" style={{ backgroundImage: "url('img/gallery/gallery-6.jpg')" }}>
-                        <a href="img/gallery/gallery-6.jpg" className="thumb-icon image-popup"><i className="fa fa-picture-o"></i></a>
-                    </div>
+                    {/* <div className="gs-item grid-wide set-bg" style={{ backgroundImage: "url('img/gallery/gallery-1.jpg')" }}> */}
+                    {galleryData.map((image) => {
+                        return (
+                            <div key={image.id} className={`gs-item set-bg ${image.isWide ? 'grid-wide' : ''}`} style={{ backgroundImage: `url('${image.src}')` }}>
+                                {/* <a href="img/gallery/gallery-1.jpg" className="thumb-icon image-popup"><i className="fa fa-picture-o"></i></a> */}
+                                <div className="thumb-icon image-popup" onClick={() => openModal(image.src)}>
+                                    <i className="fa fa-picture-o"></i>
+                                </div>
+                            </div>
+                        )
+                    })
+                    }
                 </div>
             </div>
+
+            {selectedImage && (
+                <div className="image-modal-overlay" onClick={closeModal}>
+                    <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
+                        {/* THIS IS YOUR CLOSE BUTTON */}
+                        <button className="modal-close-button" onClick={closeModal}>×</button>
+                        <img src={selectedImage} alt="Enlarged gallery view" />
+                    </div>
+                </div>
+            )}
             {/* Gallery Section End */}
 
             {/* Team Section Begin */}
@@ -327,22 +354,22 @@ const Home = () => {
                     <Slider {...testimonialSettings} className="row">
                         {[0, 1].map((groupIndex) => (
                             <>
-                            <div key={groupIndex} className="ts-slider owl-carousel owl-loaded owl-drag">
-                                {[1, 2, 3].map((numOffset) => {
-                                    const num = groupIndex * 3 + numOffset;
-                                    return (
-                                        <div className="col-lg-4" key={num}>
-                                            <div className="ts-item set-bg" style={{ backgroundImage: `url('/img/team/team-${num}.jpg')` }}>
-                                                <div className="ts_text">
-                                                    <h4>Athart Rachel</h4>
-                                                    <span>Gym Trainer</span>
+                                <div key={groupIndex} className="ts-slider owl-carousel owl-loaded owl-drag">
+                                    {[1, 2, 3].map((numOffset) => {
+                                        const num = groupIndex * 3 + numOffset;
+                                        return (
+                                            <div className="col-lg-4" key={num}>
+                                                <div className="ts-item set-bg" style={{ backgroundImage: `url('/img/team/team-${num}.jpg')` }}>
+                                                    <div className="ts_text">
+                                                        <h4>Athart Rachel</h4>
+                                                        <span>Gym Trainer</span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    );
-                                })}
-                            </div>
-                            {/* <div className="owl-dots"><button role="button" className="owl-dot active"><span></span></button><button role="button" className="owl-dot"><span></span></button><button role="button" className="owl-dot"><span></span></button></div> */}
+                                        );
+                                    })}
+                                </div>
+                                {/* <div className="owl-dots"><button role="button" className="owl-dot active"><span></span></button><button role="button" className="owl-dot"><span></span></button><button role="button" className="owl-dot"><span></span></button></div> */}
                             </>
                         ))}
                     </Slider>

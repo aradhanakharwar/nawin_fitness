@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const NotFoundPage = () => {
     return (
         <div>
@@ -19,9 +21,9 @@ const NotFoundPage = () => {
                                         <i className="fa fa-search"></i>
                                     </button>
                                 </form>
-                                <a href="/">
+                                <Link to="/">
                                     <i className="fa fa-home"></i> Go back home
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>
