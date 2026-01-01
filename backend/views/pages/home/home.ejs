@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../../common/header.ejs") %>
+
+    <body>
+        <div class="container-scroller">
+            <!-- partial:partials/_sidebar.html -->
+            <%-include ("../../common/sidebar.ejs") %>
+                <!-- partial -->
+                <!-- partial:partials/_navbar.html -->
+                <%-include("../../common/navbar.ejs") %>
+                    <div class="main-panel">
+                        <div class="content-wrapper">
+                            <div class="col-12 grid-margin stretch-card">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Home Section</h4>
+                                        <p class="card-description"> </p>
+                                        <form class="forms-sample" method="POST" enctype="multipart/form-data">
+                                            <div class="form-group">
+                                                <label for="exampleInputName1">Title 1</label>
+                                                <input type="text" class="form-control" id="exampleInputName1"
+                                                    placeholder="Title 1">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputName1">Title 2</label>
+                                                <input type="text" class="form-control" id="exampleInputName2"
+                                                    placeholder="Title 2">
+                                            </div>
+                                            <!-- <div class="form-group">
+                                        <label for="exampleInputEmail3">Email address</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail3"
+                                            placeholder="Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword4">Password</label>
+                                        <input type="password" class="form-control" id="exampleInputPassword4"
+                                            placeholder="Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleSelectGender">Gender</label>
+                                        <select class="form-control" id="exampleSelectGender">
+                                            <option>Male</option>
+                                            <option>Female</option>
+                                        </select>
+                                    </div> -->
+                                            <div class="form-group">
+                                                <label for="exampleInputCity1">Button text</label>
+                                                <input type="text" class="form-control" id="exampleInputCity1"
+                                                    placeholder="Button text">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>File upload</label>
+                                                <input type="file" name="img[]" class="file-upload-default" multiple accept="image/*">
+                                                <div class="input-group col-xs-12">
+                                                    <input type="text" class="form-control file-upload-info" disabled
+                                                        placeholder="Upload Image">
+                                                    <span class="input-group-append">
+                                                        <button class="file-upload-browse btn btn-primary"
+                                                            type="button">Upload</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                            <label>Image Preview</label>
+                                                <div id="imagePreview" class="d-flex flex-wrap"></div>
+                                                </div>
+
+                                            <!-- Track deleted existing images -->
+                                            <input type="hidden" name="deletedImages" id="deletedImages">
+
+                                            <!-- <div class="form-group">
+                                        <label for="exampleTextarea1">Textarea</label>
+                                        <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
+                                    </div> -->
+                                            <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                                            <button class="btn btn-dark">Cancel</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+        <!-- container-scroller -->
+        <style>
+.preview-box {
+    position: relative;
+    margin: 8px;
+}
+
+.preview-box img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.remove-btn {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: red;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    font-size: 14px;
+    cursor: pointer;
+}
+</style>
+
+<script>
+           
+    const fileInput = document.querySelector('.file-upload-default');
+    const previewContainer = document.getElementById('imagePreview');
+    const deletedImagesInput = document.getElementById('deletedImages');
+
+    let selectedFiles = [];
+    let deletedImages = [];
+
+    fileInput.addEventListener('change', function () {
+        Array.from(this.files).forEach(file => {
+            if (!file.type.startsWith("image/")) return;
+
+            selectedFiles.push(file);
+
+            const reader = new FileReader();
+            reader.onload = e => {
+                const box = document.createElement("div");
+                box.className = "preview-box";
+
+                box.innerHTML = `
+                    <img src="${e.target.result}">
+                    <button type="button" class="remove-btn">✖</button>
+                `;
+
+                box.querySelector(".remove-btn").onclick = () => {
+                    selectedFiles = selectedFiles.filter(f => f !== file);
+                    updateFileInput();
+                    box.remove();
+                };
+
+                previewContainer.appendChild(box);
+            };
+            reader.readAsDataURL(file);
+        });
+
+        updateFileInput();
+    });
+
+    function updateFileInput() {
+        const dataTransfer = new DataTransfer();
+        selectedFiles.forEach(file => dataTransfer.items.add(file));
+        fileInput.files = dataTransfer.files;
+    }
+</script>
+
+        <%-include("../../common/footer.ejs") %>
+    </body>
