@@ -18,9 +18,9 @@ export const loginPage = (req, res) => {
 export const register = asyncHandler(async (req, res) => {
     console.log("api hit");
 
-    const { userName, email, password, userType = "Admin" } = req.body;
+    const { email, password, userType = "Admin" } = req.body;
 
-    if (!userName, !email, !password) {
+    if (!email, !password) {
         return res.status(400).send({ success: false, message: "Please fill required fields" })
     }
 
@@ -39,7 +39,7 @@ export const register = asyncHandler(async (req, res) => {
     const hashPassword = await bcrypt.hash(password, salt);
 
     const user = await User.create({
-        userName, email, password: hashPassword, userType
+        email, password: hashPassword, userType
     });
 
     return res.status(200).send({ success: true, message: "Admin created successfully!", data: user });
